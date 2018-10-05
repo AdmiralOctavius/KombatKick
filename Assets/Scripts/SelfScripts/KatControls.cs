@@ -13,7 +13,7 @@ public class KatControls: MonoBehaviour
     private float jumpSpeed = .5233f;
     private float jumpDecay = .04f;
     private float noHoldSpeed = .1f;
-    private float fallSpeed = -.12f;
+    private float fallSpeed = -.06f;
     private bool recentJump = false;
     private int jumpIterator = 0;
     private bool isFalling;
@@ -22,7 +22,12 @@ public class KatControls: MonoBehaviour
     public Sprite spr_jump;
     public AudioSource playerSound;
 
-	void Start ()
+    public AudioClip gunSound;
+    public AudioClip jumpSound;
+
+    public GameObject laserPrefab;
+
+    void Start ()
     {
         Globals.playerObject = gameObject;//4th way to reference a gameobject from another - have the gameobject tell the other one about itself instead of vice versa
         respawnPoint = transform.position;
@@ -84,7 +89,11 @@ public class KatControls: MonoBehaviour
     {
         Transform position = GetComponent<Transform>();
         Vector3 jumpStart;
-
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Instantiate(laserPrefab, transform.GetChild(1).position, transform.rotation);
+            playerSound.PlayOneShot(gunSound);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (inJump == false)
@@ -94,15 +103,29 @@ public class KatControls: MonoBehaviour
                 inJump = true;
                 jumpIterator = 1;
 
-                playerSound.Play();
+                playerSound.PlayOneShot(jumpSound);
 
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = spr_jump;
                 recentJump = true;
                 doubleJump = true;
             }
+            else if(doubleJump == true)
+            {
+
+                jumpStart = this.GetComponent<Transform>().position;
+                transform.position = new Vector3(transform.position.x, transform.position.y + (jumpSpeed), 0);
+                inJump = true;
+                jumpIterator = 1;
+
+                playerSound.PlayOneShot(jumpSound);
+
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = spr_jump;
+                recentJump = true;
+                doubleJump = false;
+            }
             else
             {
-                Debug.Log("Should not jump");
+              
             }
         }
 
@@ -117,7 +140,7 @@ public class KatControls: MonoBehaviour
             }
             else
             {
-                Debug.Log("Falling now");
+                
                 //transform.position = new Vector3(transform.position.x, transform.position.y + (jumpSpeed - (jumpDecay * jumpIterator)), 0);
                 jumpIterator++;
                 recentJump = false;
@@ -168,7 +191,7 @@ public class KatControls: MonoBehaviour
             {
                 jumpIterator = 0;
             }
-            Debug.Log("Got here" + (jumpDecay * jumpIterator));
+            
             transform.position = new Vector3(transform.position.x, transform.position.y + (noHoldSpeed - (jumpDecay * jumpIterator)), 0);
             jumpIterator++;
             isFalling = true;
@@ -184,6 +207,7 @@ public class KatControls: MonoBehaviour
                 inJump = false;
                 jumpIterator = 0;
                 isFalling = false;
+                doubleJump = false;
                 this.gameObject.GetComponent<SpriteRenderer>().sprite = spr_neutral;
                 break;
             }

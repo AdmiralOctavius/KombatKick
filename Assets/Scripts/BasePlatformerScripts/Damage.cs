@@ -8,12 +8,51 @@ public class Damage : MonoBehaviour {
 	
     void OnTriggerEnter2D(Collider2D col)
     {
-        col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+        if (col.gameObject.tag == "Player")
+        {
+            col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+
+        }
+        else if (col.gameObject.tag == "Laser")
+        {
+
+        }
+        else if (col.gameObject.tag == "Enemy")
+        {
+            
+            col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+        if(col.gameObject.tag == "Player")
+        {
+            col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+
+        }
+        else if(col.gameObject.tag == "Laser")
+        {
+
+        }
+        else if(col.gameObject.tag == "Enemy")
+        {
+            
+            col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+        }
+        else
+        {
+            
+
+            Destroy(gameObject);
+        }
+
         //Add destroy game object
     }
 }

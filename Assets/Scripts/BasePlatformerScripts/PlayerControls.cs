@@ -4,7 +4,7 @@ public class PlayerControls : MonoBehaviour
 {
     public float speed = 5;
     Vector2 respawnPoint;
-
+  
 	void Start ()
     {
         Globals.playerObject = gameObject;//4th way to reference a gameobject from another - have the gameobject tell the other one about itself instead of vice versa

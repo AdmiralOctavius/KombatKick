@@ -16,11 +16,29 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Destroy(gameObject);
+        if (col.gameObject.tag == "Laser")
+        {
+
+        }
+        else
+        {
+            //Destroy(col.gameObject);
+            //Destroy(gameObject);
+
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(gameObject);
+        if (col.gameObject.tag == "Laser")
+        {
+
+        }
+        else
+        {
+            //Destroy(col.gameObject);
+            //Destroy(gameObject);
+
+        }
     }
 }

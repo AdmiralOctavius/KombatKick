@@ -24,8 +24,24 @@ GameObject:
   - component: {fileID: 50187339532323072}
   - component: {fileID: 61845958940957154}
   - component: {fileID: 82484082865996208}
+  - component: {fileID: 114715693440607110}
   m_Layer: 0
   m_Name: Player
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1694021633325978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4096476183715450}
+  m_Layer: 0
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +62,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4096476183715450
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1694021633325978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.82, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4899062903108562}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4318860308420074
 Transform:
   m_ObjectHideFlags: 1
@@ -70,6 +99,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4318860308420074}
+  - {fileID: 4096476183715450}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -224,10 +254,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265628afb9ae04541b728aa650bfe7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 9
+  doubleJump: 0
   spr_neutral: {fileID: 0}
   spr_jump: {fileID: 21300002, guid: 4028d537f69f80846874af7248eed892, type: 3}
   playerSound: {fileID: 82484082865996208}
+  gunSound: {fileID: 8300000, guid: d16f29dfc651c984d89e6bed7f58e619, type: 3}
+  jumpSound: {fileID: 8300000, guid: 08158fe451be1164fa85cad125969f25, type: 3}
+  laserPrefab: {fileID: 1421120149391386, guid: 395d51f7210f9484a9fda40e3e88c816,
+    type: 2}
+--- !u!114 &114715693440607110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622949462140234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9510f45c5e879a4fad154181686a017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 0
 --- !u!212 &212177508938154828
 SpriteRenderer:
   m_ObjectHideFlags: 1

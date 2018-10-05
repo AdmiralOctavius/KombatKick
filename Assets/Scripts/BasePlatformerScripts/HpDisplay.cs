@@ -18,7 +18,7 @@ public class HpDisplay : MonoBehaviour {
 
         if(player.GetComponent<Health>().health <= 0)
         {
-            SceneManager.LoadScene("LossScreen");
+           // SceneManager.LoadScene("LossScreen");
         }
 	}
 }

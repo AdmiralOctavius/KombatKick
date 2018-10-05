@@ -16,15 +16,20 @@ public class Health : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (isDead)
+        {
+            Destroy(gameObject);
+        }
 	}
 
     public void ChangeHealth(float HpChange)
     {
         health = Mathf.Min(health + HpChange, maxHealth);
+        Debug.Log("Got here in health");
         if(health <= 0)
         {
             isDead = true;
+            
         }
     }
 
