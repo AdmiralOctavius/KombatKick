@@ -10,6 +10,7 @@ public class ButtonScript : MonoBehaviour {
     {
         SceneManager.LoadScene("SampleScene");
     }
+    
 
     public void Exit()
     {

@@ -3,7 +3,7 @@
 public class Projectile : MonoBehaviour
 {
     //GameObject player;
-
+    public bool leftR;
     void Start()
     {
         //player = GameObject.FindGameObjectWithTag("Player");
@@ -11,7 +11,15 @@ public class Projectile : MonoBehaviour
 
 	void Update ()
     {
-        GetComponent<Rigidbody2D>().velocity = transform.right * 10;
+        if (leftR)
+        {
+            GetComponent<Rigidbody2D>().velocity = transform.right * 10;
+
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = transform.right * 10 * -1;
+        }
 	}
 
     void OnCollisionEnter2D(Collision2D col)

@@ -57,7 +57,7 @@ public class WalkerTurner : MonoBehaviour {
         }
         else
         {
-
+           
             transform.position = new Vector3(transform.position.x - (MoveSpeed * Time.deltaTime), transform.position.y, 1);
         }
 
@@ -66,7 +66,9 @@ public class WalkerTurner : MonoBehaviour {
             RaycastHit2D playercheck = Physics2D.Raycast(transform.position, transform.forward, 5f);
             if(Physics2D.Raycast(transform.position, transform.forward, 5f))
             {
-                Instantiate(laserPrefab, transform.position, transform.rotation);
+                Debug.Log("Got Here");
+                laserPrefab = Instantiate(laserPrefab, gameObject.transform.GetChild(0).gameObject.transform.position, transform.rotation);
+                
                 lastFireTime = Time.time;
 
                 walkerSound.Play();

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour {
 
@@ -18,6 +19,10 @@ public class Health : MonoBehaviour {
 	void Update () {
         if (isDead)
         {
+            if(gameObject.tag == "Player")
+            {
+                SceneManager.LoadScene("WinScreen");
+            }
             Destroy(gameObject);
         }
 	}

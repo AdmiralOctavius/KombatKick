@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\DoubleJumpIndicator.cs" />
+     <Compile Include="Assets\GoalPost.cs" />
      <Compile Include="Assets\Scripts\BasePlatformerScripts\ButtonScript.cs" />
      <Compile Include="Assets\Scripts\BasePlatformerScripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\BasePlatformerScripts\Damage.cs" />
