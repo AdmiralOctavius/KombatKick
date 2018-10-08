@@ -9,7 +9,7 @@ public class WalkerTurner : MonoBehaviour {
     public float MoveSpeed = 4;
     public float MaxDist = 10;
     public float MinDist = 5;
-
+    public bool Mover = false; 
     public bool enemyShooter = false;
     public GameObject laserPrefab;
     public float fireRate = 1;
@@ -50,17 +50,21 @@ public class WalkerTurner : MonoBehaviour {
 
         //transform.position = new Vector2(transform.forward = + (MoveSpeed * Time.deltaTime), transform.position.y);
         //transform.forward = new Vector3(transform.position.x + (MoveSpeed * Time.deltaTime), transform.position.y, transform.position.z);
-        if (RightMove)
+        if (Mover)
         {
+    
+            if (RightMove)
+            {
+    
+                transform.position = new Vector3(transform.position.x + (MoveSpeed * Time.deltaTime), transform.position.y,1);
+            }
+            else
+            {
+               
+                transform.position = new Vector3(transform.position.x - (MoveSpeed * Time.deltaTime), transform.position.y, 1);
+            }
 
-            transform.position = new Vector3(transform.position.x + (MoveSpeed * Time.deltaTime), transform.position.y,1);
         }
-        else
-        {
-           
-            transform.position = new Vector3(transform.position.x - (MoveSpeed * Time.deltaTime), transform.position.y, 1);
-        }
-
         if (enemyShooter == true)
         {
             RaycastHit2D playercheck = Physics2D.Raycast(transform.position, transform.forward, 5f);

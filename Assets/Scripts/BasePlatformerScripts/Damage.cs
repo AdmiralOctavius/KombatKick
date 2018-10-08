@@ -5,7 +5,7 @@ using UnityEngine;
 public class Damage : MonoBehaviour {
 
     public float damageAmount = 10;
-	
+    public bool enemyBullet = false;
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player")
@@ -19,9 +19,16 @@ public class Damage : MonoBehaviour {
         }
         else if (col.gameObject.tag == "Enemy")
         {
-            
-            col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
-            Destroy(gameObject);
+            if (enemyBullet == true)
+            {
+
+            }
+            else
+            {
+                col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+                Destroy(gameObject);
+            }
+                
         }
         else
         {
@@ -43,8 +50,11 @@ public class Damage : MonoBehaviour {
         }
         else if(col.gameObject.tag == "Enemy")
         {
-            
-            col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+            if(enemyBullet == true)
+            {
+                col.gameObject.GetComponent<Health>().ChangeHealth(-damageAmount);
+
+            }
         }
         else
         {

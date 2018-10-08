@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 82283666242727298}
   m_Layer: 0
   m_Name: CannonEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,6 +262,7 @@ MonoBehaviour:
   MoveSpeed: 4
   MaxDist: 10
   MinDist: 0
+  Mover: 0
   enemyShooter: 0
   laserPrefab: {fileID: 0}
   fireRate: 1
@@ -277,10 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c60551ac8089d54b965643e8a808bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserPrefab: {fileID: 1421120149391386, guid: 395d51f7210f9484a9fda40e3e88c816,
+  laserPrefab: {fileID: 1990279585034990, guid: 8db334e43243dd9488a92c0bc67e6f93,
     type: 2}
   fireRate: 3
-  useLineOfSight: 1
+  useLineOfSight: 0
   lookDist: 5
   turretSound: {fileID: 82283666242727298}
 --- !u!114 &114506392950596908

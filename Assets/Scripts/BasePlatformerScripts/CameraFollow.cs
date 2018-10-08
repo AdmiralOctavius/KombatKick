@@ -13,8 +13,12 @@ public class CameraFollow : MonoBehaviour
     {
 		if(followObject)
         {
-            transform.position = new Vector3(followObject.transform.position.x, 
-                followObject.transform.position.y, transform.position.z);
+            //Smooth camera approach
+            transform.position = Vector3.Lerp(transform.position, new Vector3(followObject.transform.position.x,
+                followObject.transform.position.y, transform.position.z), .1f);
+            //Direct transform
+            //transform.position = new Vector3(followObject.transform.position.x, 
+              //  followObject.transform.position.y, transform.position.z);
         }
 	}
 }

@@ -32,7 +32,12 @@ public class Projectile : MonoBehaviour
         {
             //Destroy(col.gameObject);
             //Destroy(gameObject);
-
+            //Can use this to change the color of an object
+            /*if(col.gameObject == Globals.playerObject)
+            {
+                SpriteRenderer sr = col.gameObject.GetComponent<SpriteRenderer>();
+                sr.color = Color.Lerp(sr.color, Color.red, .1f);
+            }*/
         }
     }
 

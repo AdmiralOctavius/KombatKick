@@ -31,6 +31,27 @@ public class AdvTurret : MonoBehaviour
         
         
         Vector3 dif = player.transform.position - transform.position;
+
+        dif.Normalize();//Gets the direction of a vector
+        Vector3 gunDirection = transform.right;
+        //Vector3.Angle can work as angle getter
+        //The dot product between two vectors returns a scalar (single value instead of a vector)
+        //Representing a ratio of the angle between two vectors
+        //Two vectors pointing the same dirction: 1
+        //Two vectors pointing opposite each other: -1
+        //Two vectors that are perpendicular: theta
+        //dot = |a| * |b| * Cos(theta)
+        //So the angle thta =  acos (dot_
+
+        /*float dot = Vector3.Dot(dif, gunDirection);
+        float angle = Mathf.Acos(dot);
+        if (Mathf.Rad2Deg * angle < 30)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 10f);
+            //if(hit && )
+        }
+        Lerp = linear interpolation
+        */
         float angle = Mathf.Rad2Deg * Mathf.Atan2(dif.y, dif.x);
         transform.eulerAngles = new Vector3(0, 0, angle);
 
